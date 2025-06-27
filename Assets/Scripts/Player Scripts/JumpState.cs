@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class JumpState : State
+public class JumpState : State<PlayerStateManager>
 {
     private Rigidbody2D rb;
     private LayerMask ground;
@@ -17,13 +17,15 @@ public class JumpState : State
 
         rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         hasLeftGround = false;
+
+        state.NotifyPlayerObservers(PlayerAction.jump);
     }
 
     public override void UpdateState(PlayerStateManager state)
     {
         Transform groundCheck = state.transform.Find("GroundCheck");
         Vector3 checkPos = groundCheck != null ? groundCheck.position : state.transform.position;
-        bool isGrounded = Physics2D.OverlapBox(checkPos, new Vector2(0.5f, 0.1f), 0, ground);
+        bool isGrounded = Physics2D.OverlapBox(checkPos, new Vector2(0.1f, 0.1f), 0, ground);
 
         horizontal = Input.GetAxisRaw("Horizontal");
 

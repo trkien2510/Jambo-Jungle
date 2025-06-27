@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class IdleState : State
+public class IdleState : State<PlayerStateManager>
 {
     private float horizontal;
     public override void EnterState(PlayerStateManager state)

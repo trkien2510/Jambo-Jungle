@@ -2,13 +2,13 @@ using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(CircleCollider2D), typeof(Animator))]
-public class EnemyBullet : MonoBehaviour
+public class PlayerBullet : MonoBehaviour
 {
     private Rigidbody2D rb;
     private CircleCollider2D circleCollider;
     private Animator anim;
     private float speed = 5f;
-    private float dmg = 10f;
+    private float dmg = 15f;
 
     public void Initialize()
     {
@@ -41,12 +41,9 @@ public class EnemyBullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Enemy"))
         {
-            PlayerHealth playerHealth = collision.GetComponent<PlayerHealth>();
-            playerHealth.TakeDamage(dmg);
-            circleCollider.enabled = false;
-            gameObject.SetActive(false);
+            
         }
     }
 

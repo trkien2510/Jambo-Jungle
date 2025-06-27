@@ -1,15 +1,20 @@
 using UnityEngine;
 
-public class RunState : State
+public class RunState : State<PlayerStateManager>
 {
     private Rigidbody2D rb;
     private float horizontal;
     private float moveSpeed = 5f;
 
+    private float stepTimer = 0f;
+    private float stepInterval = 0.3f;
+
     public override void EnterState(PlayerStateManager state)
     {
         rb = state.GetComponent<Rigidbody2D>();
         state.anim.SetBool("Running", true);
+        state.NotifyPlayerObservers(PlayerAction.run);
+        stepTimer = 0f;
     }
 
     public override void UpdateState(PlayerStateManager state)
@@ -27,6 +32,20 @@ public class RunState : State
 
         rb.velocity = new Vector2(horizontal * moveSpeed, rb.velocity.y);
 
+        if (Mathf.Abs(horizontal) > 0.1f)
+        {
+            stepTimer += Time.deltaTime;
+            if (stepTimer >= stepInterval)
+            {
+                state.NotifyPlayerObservers(PlayerAction.run);
+                stepTimer = 0f;
+            }
+        }
+        else
+        {
+            stepTimer = stepInterval;
+        }
+
         ExitState(state);
     }
 
@@ -38,7 +57,7 @@ public class RunState : State
             state.SwitchCurrentState(state.idleState);
         }
 
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKey(KeyCode.W))
         {
             state.anim.SetBool("Running", false);
             state.SwitchCurrentState(state.jumpState);

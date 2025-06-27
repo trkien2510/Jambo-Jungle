@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CrounchState : State
+public class CrounchState : State<PlayerStateManager>
 {
     private Rigidbody2D rb;
     private BoxCollider2D boxCollider;
