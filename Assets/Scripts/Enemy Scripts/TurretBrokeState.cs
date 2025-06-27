@@ -2,16 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TurretBrokeState : MonoBehaviour
+public class TurretBrokeState : State<TurretStateManager>
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void EnterState(TurretStateManager state)
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void UpdateState(TurretStateManager state)
+    {
+
+    }
+
+    public override void ExitState(TurretStateManager state)
     {
         
     }

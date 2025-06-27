@@ -55,7 +55,7 @@ public class JumpState : State<PlayerStateManager>
         state.anim.SetBool("Jumping", false);
         if (horizontal == 0)
             state.SwitchCurrentState(state.idleState);
-        else
+        else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
             state.SwitchCurrentState(state.runState);
     }
 }

@@ -45,6 +45,11 @@ public class PlayerBullet : MonoBehaviour
         {
             
         }
+        if (collision.CompareTag("Turret"))
+        {
+            TurretHealth turretHealth = collision.GetComponent<TurretHealth>();
+            turretHealth.takeDamage(dmg);
+        }
     }
 
     IEnumerator BulletExplosion()

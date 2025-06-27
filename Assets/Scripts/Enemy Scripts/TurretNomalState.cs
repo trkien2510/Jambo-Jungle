@@ -14,10 +14,15 @@ public class TurretNomalState : State<TurretStateManager>
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player != null)
         {
-            Vector2 aimDirection = (player.transform.position - state.transform.position).normalized;
+            Vector2 dir = (player.transform.position - state.transform.position);
 
-            state.anim.SetFloat("DirX", aimDirection.x);
-            state.anim.SetFloat("DirY", aimDirection.y);
+            if (dir.magnitude < 0.1f) return;
+
+            int x = Mathf.RoundToInt(dir.normalized.x);
+            int y = Mathf.RoundToInt(dir.normalized.y);
+
+            state.anim.SetFloat("DirX", x);
+            state.anim.SetFloat("DirY", y);
         }
     }
 

@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public abstract class State<T>
 {
     public abstract void EnterState(T state);

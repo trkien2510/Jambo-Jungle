@@ -8,7 +8,9 @@ public class HurtState : State<PlayerStateManager>
     {
         canSwitchState = false;
         state.anim.SetBool("Hurt", true);
-        state.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        state.anim.SetBool("Jumping", false);
+        Rigidbody2D rb = state.GetComponent<Rigidbody2D>();
+        rb.velocity = new Vector2(0, rb.velocity.y);
         state.NotifyPlayerObservers(PlayerAction.hurt);
         state.StartCoroutine(WaitEndAnim(state));
     }
@@ -41,6 +43,7 @@ public class HurtState : State<PlayerStateManager>
     public override void ExitState(PlayerStateManager state)
     {
         state.anim.SetBool("Hurt", false);
+
     }
 
     IEnumerator WaitEndAnim(PlayerStateManager state)

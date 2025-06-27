@@ -1,8 +1,11 @@
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerStateManager))]
 public class PlayerHealth : Subject
 {
+    private SpriteRenderer spriteRenderer;
+
     private float health = 100f;
     private float currentHealth;
     
@@ -12,6 +15,7 @@ public class PlayerHealth : Subject
 
     private void Start()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
         currentHealth = health;
     }
 
@@ -31,16 +35,15 @@ public class PlayerHealth : Subject
         {
             currentHealth -= amount;
 
+            var stateManager = GetComponent<PlayerStateManager>();
             if (currentHealth <= 0)
-            {
-                GetComponent<PlayerStateManager>().SwitchCurrentState(GetComponent<PlayerStateManager>().deadState);
-            }
+                stateManager.SwitchCurrentState(stateManager.deadState);
             else
-            {
-                GetComponent<PlayerStateManager>().SwitchCurrentState(GetComponent<PlayerStateManager>().hurtState);
-            }
-            canTakeDamaged= false;
+                stateManager.SwitchCurrentState(stateManager.hurtState);
+
+            canTakeDamaged = false;
             timer = 0;
+            StartCoroutine(FlashSprite());
         }
     }
 
@@ -49,5 +52,23 @@ public class PlayerHealth : Subject
         currentHealth = Mathf.Min(currentHealth + amount, 100);
     }
 
+    IEnumerator FlashSprite()
+    {
+        float flashDuration = 0.2f;
+        float elapsed = 0f;
+        while (elapsed < takeDamageInterval)
+        {
+            spriteRenderer.enabled = false;
+            yield return new WaitForSeconds(flashDuration / 2f);
+            spriteRenderer.enabled = true;
+            yield return new WaitForSeconds(flashDuration / 2f);
+            elapsed += flashDuration;
+        }
+
+        spriteRenderer.enabled = true;
+    }
+
     public float CurrentHealth => currentHealth;
+    public bool CanTakeDamaged => canTakeDamaged;
+
 }
