@@ -1,42 +1,30 @@
 using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D), typeof(CircleCollider2D), typeof(Animator))]
+[RequireComponent(typeof(Rigidbody2D), typeof(Animator))]
 public class PlayerBullet : MonoBehaviour
 {
     private Rigidbody2D rb;
-    private CircleCollider2D circleCollider;
     private Animator anim;
-    private float speed = 5f;
+    private float speed = 10f;
     private float dmg = 15f;
 
-    public void Initialize()
+    public void Initialize(Vector2 direction)
     {
-        rb = GetComponent<Rigidbody2D>();
-        circleCollider = GetComponent<CircleCollider2D>();
-        anim = GetComponent<Animator>();
+        if (rb == null)
+            rb = GetComponent<Rigidbody2D>();
+        if (anim == null)
+            anim = GetComponent<Animator>();
 
-        anim.enabled = true;
         anim.SetBool("Explosion", false);
-
-        rb.velocity = transform.right * speed;
-    }
-
-    private void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
-        circleCollider = GetComponent<CircleCollider2D>();
-        anim = GetComponent<Animator>();
-
         anim.enabled = true;
-        anim.SetBool("Explosion", false);
 
-        rb.velocity = transform.right * speed;
-    }
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, 0, angle);
 
-    private void Update()
-    {
-        //StartCoroutine(BulletExplosion());
+        rb.velocity = direction.normalized * speed;
+
+        StartCoroutine(OutOfTime());
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -49,17 +37,16 @@ public class PlayerBullet : MonoBehaviour
         {
             TurretHealth turretHealth = collision.GetComponent<TurretHealth>();
             turretHealth.takeDamage(dmg);
+            gameObject.SetActive(false);
         }
+        
     }
 
-    IEnumerator BulletExplosion()
+    IEnumerator OutOfTime()
     {
-        rb.velocity = Vector2.zero;
+        yield return new WaitForSeconds(2f);
         anim.SetBool("Explosion", true);
-        yield return new WaitForSeconds(0.2f);
-        anim.SetBool("Explosion", false);
-        anim.enabled = false;
-        circleCollider.enabled = true;
+        yield return new WaitForSeconds(0.5f);
         gameObject.SetActive(false);
     }
 }

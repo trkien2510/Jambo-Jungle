@@ -27,10 +27,13 @@ public class CrounchState : State<PlayerStateManager>
 
     public override void UpdateState(PlayerStateManager state)
     {
-        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D) && !Input.GetKey(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.A) && state.IsFacingRight)
         {
-            ExitState(state);
-            state.SwitchCurrentState(state.runState);
+            state.Flip();
+        }
+        if (Input.GetKeyDown(KeyCode.D) && !state.IsFacingRight)
+        {
+            state.Flip();
         }
 
         if (!Input.GetKey(KeyCode.S))

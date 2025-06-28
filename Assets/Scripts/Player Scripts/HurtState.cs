@@ -11,7 +11,7 @@ public class HurtState : State<PlayerStateManager>
         state.anim.SetBool("Jumping", false);
         Rigidbody2D rb = state.GetComponent<Rigidbody2D>();
         rb.velocity = new Vector2(0, rb.velocity.y);
-        state.NotifyPlayerObservers(PlayerAction.hurt);
+        state.NotifyPlayerObservers(SoundEvent.hurt);
         state.StartCoroutine(WaitEndAnim(state));
     }
 

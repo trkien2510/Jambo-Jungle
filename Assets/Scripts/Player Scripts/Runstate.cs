@@ -13,7 +13,7 @@ public class RunState : State<PlayerStateManager>
     {
         rb = state.GetComponent<Rigidbody2D>();
         state.anim.SetBool("Running", true);
-        state.NotifyPlayerObservers(PlayerAction.run);
+        state.NotifyPlayerObservers(SoundEvent.run);
         stepTimer = 0f;
     }
 
@@ -37,7 +37,7 @@ public class RunState : State<PlayerStateManager>
             stepTimer += Time.deltaTime;
             if (stepTimer >= stepInterval)
             {
-                state.NotifyPlayerObservers(PlayerAction.run);
+                state.NotifyPlayerObservers(SoundEvent.run);
                 stepTimer = 0f;
             }
         }

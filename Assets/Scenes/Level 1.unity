@@ -187,7 +187,7 @@ Transform:
   m_GameObject: {fileID: 1048714}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.33, y: -1.41, z: -10}
+  m_LocalPosition: {x: 5.103, y: -1.41, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -205,11 +205,11 @@ GameObject:
   - component: {fileID: 261444245}
   - component: {fileID: 261444249}
   - component: {fileID: 261444250}
+  - component: {fileID: 261444251}
   - component: {fileID: 261444244}
   - component: {fileID: 261444246}
   - component: {fileID: 261444248}
   - component: {fileID: 261444247}
-  - component: {fileID: 261444251}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -255,8 +255,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 389605941
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 1223494204, guid: de53266a2e260704aa9e6c26b67f8294, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -278,7 +278,7 @@ Transform:
   m_GameObject: {fileID: 261444243}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.33, y: -1.41, z: 0}
+  m_LocalPosition: {x: 5.103, y: -1.41, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1359,9 +1359,8 @@ MonoBehaviour:
   step: {fileID: 8300000, guid: f3b457fa592c99a4a86fe03985528443, type: 3}
   hurt: {fileID: 8300000, guid: 352d2183c783edf449b875bb72ccc61d, type: 3}
   jump: {fileID: 8300000, guid: ebb1d02e05cdd9346a6118467de4cbee, type: 3}
-  jumpHurt: {fileID: 8300000, guid: 27e36db62eb2fc842899d21c3648e0c6, type: 3}
-  landing: {fileID: 8300000, guid: aa1936bfa75c8bc4a97ec96383ad5138, type: 3}
   shoot: {fileID: 8300000, guid: ca9a4b9f6b6cdae4996dfb1f57f234a0, type: 3}
+  turretBroke: {fileID: 8300000, guid: e3244677fd08b7d4895be661114c6dea, type: 3}
   click: {fileID: 8300000, guid: 88cbf7b9606c0514ca36779a2029882f, type: 3}
   audioMixer: {fileID: 24100000, guid: 9f2c6dda172d883469d651970df873b6, type: 2}
 --- !u!114 &984137200
@@ -1377,6 +1376,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerStateSubject: {fileID: 261444249}
+  _turretSubject: {fileID: 0}
 --- !u!1 &1121616596
 GameObject:
   m_ObjectHideFlags: 0
@@ -1409,7 +1409,7 @@ MonoBehaviour:
   pools:
   - tag: EnemyBullet
     prefab: {fileID: 546630705583420315, guid: 5b27c44f821beb444aadc43d659a2789, type: 3}
-    size: 50
+    size: 5
   - tag: PlayerBullet
     prefab: {fileID: 6541113472635297533, guid: ec64784b63740054dbed8b466b548bcd, type: 3}
     size: 20
@@ -1603,7 +1603,7 @@ Transform:
   m_GameObject: {fileID: 1747805837}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.33, y: -1.41, z: -10}
+  m_LocalPosition: {x: 5.103, y: -1.41, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

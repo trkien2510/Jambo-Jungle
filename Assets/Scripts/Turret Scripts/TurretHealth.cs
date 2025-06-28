@@ -21,7 +21,7 @@ public class TurretHealth : MonoBehaviour
         health -= amount;
         if (health <= 0)
         {
-            GetComponent<TurretStateManager>().SwitchCurrentState(GetComponent<TurretStateManager>().brokeState);
+            GetComponent<TurretStateManager>().SwitchBrokeState();
         }
     }
 }

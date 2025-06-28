@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class TurretStateManager : MonoBehaviour
+public class TurretStateManager : Subject
 {
     State<TurretStateManager> currentState;
 
@@ -21,10 +21,14 @@ public class TurretStateManager : MonoBehaviour
         currentState.UpdateState(this);
     }
 
-    public void SwitchCurrentState(State<TurretStateManager> state)
+    public void SwitchBrokeState()
     {
-        currentState = state;
-        state.EnterState(this);
+        NotifyObserver(SoundEvent.turetBroken);
+        currentState = brokeState;
+        currentState.EnterState(this);
+        GetComponent<TurretHealth>().enabled = false;
+        GetComponent<TurretSpawnBullet>().enabled = false;
+        GetComponent<BoxCollider2D>().enabled = false;
     }
 
     public Animator anim => animator;

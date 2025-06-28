@@ -18,7 +18,7 @@ public class JumpState : State<PlayerStateManager>
         rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         hasLeftGround = false;
 
-        state.NotifyPlayerObservers(PlayerAction.jump);
+        state.NotifyPlayerObservers(SoundEvent.jump);
     }
 
     public override void UpdateState(PlayerStateManager state)

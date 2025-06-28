@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class EnemySpawnBullet : MonoBehaviour
+public class TurretSpawnBullet : MonoBehaviour
 {
     private Vector2Int direction;
-    private float timeInteval = 2f;
+    private float timeInteval = 1f;
     private float timer;
 
     void Update()

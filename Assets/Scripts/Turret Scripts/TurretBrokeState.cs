@@ -6,7 +6,7 @@ public class TurretBrokeState : State<TurretStateManager>
 {
     public override void EnterState(TurretStateManager state)
     {
-        
+        state.anim.SetTrigger("Broken");
     }
 
     public override void UpdateState(TurretStateManager state)

@@ -6,18 +6,17 @@ public class AudioManager : MonoBehaviour
     public static AudioManager Instance;
 
     [Header("Audio Sources")]
-    [SerializeField] private AudioSource BGM;
-    [SerializeField] private AudioSource SFX;
+    [SerializeField] AudioSource BGM;
+    [SerializeField] AudioSource SFX;
 
     [Header("Audio Clips")]
-    [SerializeField] public AudioClip music;
-    [SerializeField] public AudioClip step;
-    [SerializeField] public AudioClip hurt;
-    [SerializeField] public AudioClip jump;
-    [SerializeField] public AudioClip jumpHurt;
-    [SerializeField] public AudioClip landing;
-    [SerializeField] public AudioClip shoot;
-    [SerializeField] public AudioClip click;
+    public AudioClip music;
+    public AudioClip step;
+    public AudioClip hurt;
+    public AudioClip jump;
+    public AudioClip shoot;
+    public AudioClip turretBroke;
+    public AudioClip click;
 
     [Header("Audio Mixer")]
     [SerializeField] AudioMixer audioMixer;

@@ -35,18 +35,19 @@ public class PlayerStateManager : Subject
         Debug.Log(state);
     }
 
-    public bool IsFacingRight => isFacingRight;
-
-    public Animator anim => animator;
-
     public void Flip()
     {
         transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
         isFacingRight = !isFacingRight;
     }
 
-    public void NotifyPlayerObservers(PlayerAction action)
+    public void NotifyPlayerObservers(SoundEvent action)
     {
         NotifyObserver(action);
     }
+
+
+    public bool IsFacingRight => isFacingRight;
+    public Animator anim => animator;
+    public State<PlayerStateManager> CurrentState => currentState;
 }

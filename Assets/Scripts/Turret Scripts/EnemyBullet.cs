@@ -1,12 +1,12 @@
 using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D), typeof(CircleCollider2D), typeof(Animator))]
+[RequireComponent(typeof(Rigidbody2D), typeof(Animator))]
 public class EnemyBullet : MonoBehaviour
 {
     private Rigidbody2D rb;
     private Animator anim;
-    private float speed = 6f;
+    private float speed = 10f;
     private float dmg = 10f;
 
     public void Initialize(Vector2 direction)

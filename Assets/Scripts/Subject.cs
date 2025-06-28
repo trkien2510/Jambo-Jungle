@@ -15,7 +15,7 @@ public abstract class Subject : MonoBehaviour
         observers.Remove(observer);
     }
 
-    protected void NotifyObserver(PlayerAction action)
+    protected void NotifyObserver(SoundEvent action)
     {
         observers.ForEach((observer) => {
             observer.OnNotify(action);
