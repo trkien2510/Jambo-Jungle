@@ -16,7 +16,7 @@ public class TurretHealth : MonoBehaviour
         
     }
 
-    public void takeDamage(float amount)
+    public void TakeDamage(float amount)
     {
         health -= amount;
         if (health <= 0)

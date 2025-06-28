@@ -5,5 +5,5 @@ public enum SoundEvent
     jump,
     run,
     shoot,
-    turetBroken,
+    explosion,
 }

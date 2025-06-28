@@ -8,8 +8,8 @@ public class CrounchState : State<PlayerStateManager>
     private Vector2 originalSize;
     private Vector2 originalOffset;
 
-    private Vector2 crouchSize = new Vector2(0.7f, 0.3f);
-    private Vector2 crouchOffset = new Vector2(0f, -0.275f);
+    private Vector2 crouchSize = new Vector2(0.7f, 0.04f);
+    private Vector2 crouchOffset = new Vector2(0f, -0.4f);
 
     public override void EnterState(PlayerStateManager state)
     {

@@ -16,7 +16,8 @@ public class PlayerBullet : MonoBehaviour
         if (anim == null)
             anim = GetComponent<Animator>();
 
-        anim.SetBool("Explosion", false);
+        anim.Rebind();
+        anim.SetBool("OutOfTime", false);
         anim.enabled = true;
 
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
@@ -31,21 +32,42 @@ public class PlayerBullet : MonoBehaviour
     {
         if (collision.CompareTag("Enemy"))
         {
-            
+            EnemyHealth enemyHealth = collision.GetComponent<EnemyHealth>();
+            enemyHealth.TakeDamage(dmg);
+            StartCoroutine(Impact());
         }
         if (collision.CompareTag("Turret"))
         {
             TurretHealth turretHealth = collision.GetComponent<TurretHealth>();
-            turretHealth.takeDamage(dmg);
-            gameObject.SetActive(false);
+            turretHealth.TakeDamage(dmg);
+            StartCoroutine(Impact());
         }
-        
+        if (collision.CompareTag("Portal"))
+        {
+            PortalHealth portalHealth = collision.GetComponent<PortalHealth>();
+            portalHealth.TakeDamage(dmg);
+            StartCoroutine(Impact());
+        }
+        if (collision.CompareTag("Barrel"))
+        {
+            Barrel barrelHealth = collision.GetComponent<Barrel>();
+            barrelHealth.TakeDamage(dmg);
+            StartCoroutine(Impact());
+        }
+    }
+
+    IEnumerator Impact()
+    {
+        rb.velocity = Vector2.zero;
+        anim.SetTrigger("Impact");
+        yield return new WaitForSeconds(0.5f);
+        gameObject.SetActive(false);
     }
 
     IEnumerator OutOfTime()
     {
         yield return new WaitForSeconds(2f);
-        anim.SetBool("Explosion", true);
+        anim.SetBool("OutOfTime", true);
         yield return new WaitForSeconds(0.5f);
         gameObject.SetActive(false);
     }

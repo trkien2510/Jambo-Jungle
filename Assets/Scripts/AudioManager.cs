@@ -15,7 +15,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip hurt;
     public AudioClip jump;
     public AudioClip shoot;
-    public AudioClip turretBroke;
+    public AudioClip explosion;
     public AudioClip click;
 
     [Header("Audio Mixer")]

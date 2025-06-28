@@ -38,6 +38,20 @@ public class EnemyBullet : MonoBehaviour
                 gameObject.SetActive(false);
             }
         }
+        //using if the bullet can't through the wall
+        //if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        //{
+        //    StopCoroutine(OutOfTime());
+        //    StartCoroutine(TouchGround());
+        //}
+    }
+
+    IEnumerator TouchGround()
+    {
+        rb.velocity = Vector2.zero;
+        anim.SetBool("Explosion", true);
+        yield return new WaitForSeconds(0.5f);
+        gameObject.SetActive(false);
     }
 
     IEnumerator OutOfTime()

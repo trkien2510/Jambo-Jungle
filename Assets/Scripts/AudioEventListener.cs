@@ -2,9 +2,6 @@ using UnityEngine;
 
 public class AudioEventListener : MonoBehaviour, IObserver
 {
-    [SerializeField] Subject _playerStateSubject;
-    [SerializeField] Subject _turretSubject;
-
     public void OnNotify(SoundEvent action)
     {
         switch (action)
@@ -24,8 +21,8 @@ public class AudioEventListener : MonoBehaviour, IObserver
             case SoundEvent.shoot:
                 AudioManager.Instance.PlaySFX(AudioManager.Instance.shoot);
                 break;
-            case SoundEvent.turetBroken:
-                AudioManager.Instance.PlaySFX(AudioManager.Instance.turretBroke);
+            case SoundEvent.explosion:
+                AudioManager.Instance.PlaySFX(AudioManager.Instance.explosion);
                 break;
             default:
                 break;
@@ -34,13 +31,17 @@ public class AudioEventListener : MonoBehaviour, IObserver
 
     private void OnEnable()
     {
-        _playerStateSubject.AddObserver(this);
-        _turretSubject.AddObserver(this);
+        foreach (var subject in FindObjectsOfType<Subject>())
+        {
+            subject.AddObserver(this);
+        }
     }
 
     private void OnDisable()
     {
-        _playerStateSubject.RemoveObserver(this);
-        _turretSubject.RemoveObserver(this);
+        foreach (var subject in FindObjectsOfType<Subject>())
+        {
+            subject.RemoveObserver(this);
+        }
     }
 }

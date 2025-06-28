@@ -17,6 +17,14 @@ public class PlayerHealth : Subject
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         currentHealth = health;
+
+        foreach (var observer in FindObjectsOfType<MonoBehaviour>())
+        {
+            if (observer is IObserver obs)
+            {
+                AddObserver(obs);
+            }
+        }
     }
 
     private void Update()

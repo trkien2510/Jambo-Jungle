@@ -21,9 +21,20 @@ public class TurretStateManager : Subject
         currentState.UpdateState(this);
     }
 
+    private void OnEnable()
+    {
+        foreach (var observer in FindObjectsOfType<MonoBehaviour>())
+        {
+            if (observer is IObserver obs)
+            {
+                AddObserver(obs);
+            }
+        }
+    }
+
     public void SwitchBrokeState()
     {
-        NotifyObserver(SoundEvent.turetBroken);
+        NotifyObserver(SoundEvent.explosion);
         currentState = brokeState;
         currentState.EnterState(this);
         GetComponent<TurretHealth>().enabled = false;

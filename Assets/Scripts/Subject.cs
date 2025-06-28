@@ -7,7 +7,8 @@ public abstract class Subject : MonoBehaviour
 
     public void AddObserver(IObserver observer)
     {
-        observers.Add(observer);
+        if (!observers.Contains(observer))
+            observers.Add(observer);
     }
 
     public void RemoveObserver(IObserver observer)
@@ -17,8 +18,18 @@ public abstract class Subject : MonoBehaviour
 
     protected void NotifyObserver(SoundEvent action)
     {
-        observers.ForEach((observer) => {
-            observer.OnNotify(action);
-        });
+        var currentObservers = new List<IObserver>(observers);
+
+        foreach (var observer in currentObservers)
+        {
+            try
+            {
+                observer.OnNotify(action);
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogWarning(e.Message);
+            }
+        }
     }
 }
