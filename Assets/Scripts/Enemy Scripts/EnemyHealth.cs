@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(EnemyStateManager))]
-public class EnemyHealth : MonoBehaviour
+public class EnemyHealth : Subject
 {
     private float enemyHealth;
     private float enemyMaxHealth = 100f;
@@ -12,6 +12,14 @@ public class EnemyHealth : MonoBehaviour
     {
         enemyHealth = enemyMaxHealth;
         stateManager = GetComponent<EnemyStateManager>();
+
+        foreach (var observer in FindObjectsOfType<MonoBehaviour>())
+        {
+            if (observer is IObserver obs)
+            {
+                AddObserver(obs);
+            }
+        }
     }
 
     public void TakeDamage(float amount)
@@ -20,6 +28,7 @@ public class EnemyHealth : MonoBehaviour
 
         if (enemyHealth <= 0)
         {
+            NotifyObserver(SoundEvent.explosion);
             stateManager.SwitchEnemyState(stateManager.enemyDeadState);
         }
     }

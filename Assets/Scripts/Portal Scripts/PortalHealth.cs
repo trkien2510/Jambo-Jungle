@@ -3,9 +3,10 @@ using UnityEngine;
 
 public class PortalHealth : Subject
 {
-    private SpriteRenderer m_Renderer;
-    private BoxCollider2D m_Collider;
-    private Animator m_Animator;
+    private SpriteRenderer rend;
+    private BoxCollider2D col;
+    private Rigidbody2D rb;
+    private Animator anim;
 
     [SerializeField] private Sprite spriteBroke;
     private GameObject explosionEffect;
@@ -15,15 +16,24 @@ public class PortalHealth : Subject
 
     void Start()
     {
-        m_Renderer = GetComponent<SpriteRenderer>();
-        m_Collider = GetComponent<BoxCollider2D>();
-        m_Animator = GetComponent<Animator>();
+        rend = GetComponent<SpriteRenderer>();
+        col = GetComponent<BoxCollider2D>();
+        rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
         Transform explosionTransform = transform.Find("ExplosionEffect");
         explosionEffect = explosionTransform != null ? explosionTransform.gameObject : null;
         health = maxHealth;
 
         if (explosionEffect != null)
             explosionEffect.SetActive(false);
+
+        foreach (var observer in FindObjectsOfType<MonoBehaviour>())
+        {
+            if (observer is IObserver obs)
+            {
+                AddObserver(obs);
+            }
+        }
     }
 
     public void TakeDamage(float amount)
@@ -31,7 +41,7 @@ public class PortalHealth : Subject
         health -= amount;
         if (health <= 0)
         {
-            m_Collider.enabled = false;
+            col.enabled = false;
             GetComponent<SpawnEnemy>().enabled = false;
 
             StartCoroutine(WaitExplosion());
@@ -42,10 +52,12 @@ public class PortalHealth : Subject
     {
         if (explosionEffect != null)
         {
+            NotifyObserver(SoundEvent.explosion);
             explosionEffect.SetActive(true);
-            m_Animator.SetTrigger("Explosion");
+            anim.SetTrigger("Explosion");
+            rb.bodyType = RigidbodyType2D.Kinematic;
             yield return new WaitForSeconds(1f);
-            m_Renderer.enabled = false;
+            rend.enabled = false;
             explosionEffect.gameObject.GetComponent<SpriteRenderer>().sprite = spriteBroke;
         }
     }

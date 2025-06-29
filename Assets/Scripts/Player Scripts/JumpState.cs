@@ -34,9 +34,7 @@ public class JumpState : State<PlayerStateManager>
             state.Flip();
         }
 
-        Vector2 aimDirection = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - state.transform.position).normalized;
-        state.anim.SetFloat("AimX", aimDirection.x);
-        state.anim.SetFloat("AimY", aimDirection.y);
+        state.UpdateAim();
 
         rb.velocity = new Vector2(horizontal * moveSpeed, rb.velocity.y);
 

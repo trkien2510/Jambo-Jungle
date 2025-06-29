@@ -14,15 +14,7 @@ public class TurretStateManager : Subject
         animator = GetComponent<Animator>();
         currentState = nomalState;
         currentState.EnterState(this);
-    }
 
-    private void Update()
-    {
-        currentState.UpdateState(this);
-    }
-
-    private void OnEnable()
-    {
         foreach (var observer in FindObjectsOfType<MonoBehaviour>())
         {
             if (observer is IObserver obs)
@@ -30,6 +22,11 @@ public class TurretStateManager : Subject
                 AddObserver(obs);
             }
         }
+    }
+
+    private void Update()
+    {
+        currentState.UpdateState(this);
     }
 
     public void SwitchBrokeState()

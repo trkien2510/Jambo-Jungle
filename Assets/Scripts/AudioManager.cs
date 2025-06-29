@@ -15,11 +15,15 @@ public class AudioManager : MonoBehaviour
     public AudioClip hurt;
     public AudioClip jump;
     public AudioClip shoot;
+    public AudioClip enemyShoot;
     public AudioClip explosion;
     public AudioClip click;
 
     [Header("Audio Mixer")]
     [SerializeField] AudioMixer audioMixer;
+
+    private bool isBgmOn = true;
+    private bool isSfxOn = true;
 
     private void Awake()
     {
@@ -34,36 +38,38 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void PlayBGM(AudioClip clip)
+    private void Start()
     {
-        if (BGM.clip == clip) return;
-        BGM.clip = clip;
-        BGM.loop = true;
-        BGM.Play();
+        PlayBGM();
+    }
+
+    public void PlayBGM()
+    {
+        if (BGM != null && BGM != null && isBgmOn)
+        {
+            BGM.clip = music;
+            BGM.loop = true;
+            BGM.Play();
+        }
+    }
+
+    public void SetBgm(bool isOn)
+    {
+        isBgmOn = isOn;
+        if (isOn)
+            PlayBGM();
+        else
+            BGM.Stop();
     }
 
     public void PlaySFX(AudioClip clip)
     {
-        SFX.PlayOneShot(clip);
+        if (isSfxOn && clip != null)
+            SFX.PlayOneShot(clip);
     }
 
-    public void SetBGMVolume(float sliderValue)
+    public void SetSfx(bool isOn)
     {
-        if (audioMixer == null)
-        {
-            return;
-        }
-        float volume = Mathf.Log10(Mathf.Clamp(sliderValue, 0.0001f, 1f)) * 20f;
-        audioMixer.SetFloat("BGMVolume", volume);
-    }
-
-    public void SetSFXVolume(float sliderValue)
-    {
-        if (audioMixer == null)
-        {
-            return;
-        }
-        float volume = Mathf.Log10(Mathf.Clamp(sliderValue, 0.0001f, 1f)) * 20f;
-        audioMixer.SetFloat("SFXVolume", volume);
+        isSfxOn = isOn;
     }
 }

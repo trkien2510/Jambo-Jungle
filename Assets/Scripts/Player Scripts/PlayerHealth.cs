@@ -6,7 +6,7 @@ public class PlayerHealth : Subject
 {
     private SpriteRenderer spriteRenderer;
 
-    private float health = 100f;
+    private float maxHealth = 100f;
     private float currentHealth;
     
     private bool canTakeDamaged = true;
@@ -16,7 +16,7 @@ public class PlayerHealth : Subject
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        currentHealth = health;
+        currentHealth = maxHealth;
 
         foreach (var observer in FindObjectsOfType<MonoBehaviour>())
         {
@@ -55,9 +55,9 @@ public class PlayerHealth : Subject
         }
     }
 
-    public void Heal(float amount)
+    public void FullHeal()
     {
-        currentHealth = Mathf.Min(currentHealth + amount, 100);
+        currentHealth = maxHealth;
     }
 
     IEnumerator FlashSprite()

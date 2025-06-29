@@ -24,6 +24,9 @@ public class AudioEventListener : MonoBehaviour, IObserver
             case SoundEvent.explosion:
                 AudioManager.Instance.PlaySFX(AudioManager.Instance.explosion);
                 break;
+            case SoundEvent.click:
+                AudioManager.Instance.PlaySFX(AudioManager.Instance.click);
+                break;
             default:
                 break;
         }

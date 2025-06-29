@@ -15,7 +15,7 @@ public class PlayerSpawnBullet : Subject
 
     void Update()
     {
-        Vector2 aimDirection = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).normalized;
+        Vector2 aimDirection = playerState.AimDirection;
 
         if (playerState.CurrentState == playerState.crounchState)
         {

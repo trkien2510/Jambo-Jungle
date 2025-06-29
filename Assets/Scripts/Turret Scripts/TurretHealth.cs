@@ -4,7 +4,7 @@ using UnityEngine;
 public class TurretHealth : MonoBehaviour
 {
     private float health;
-    private float maxHealth = 100f;
+    private float maxHealth = 200f;
 
     void Start()
     {

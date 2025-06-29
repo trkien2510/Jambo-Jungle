@@ -20,10 +20,8 @@ public class RunState : State<PlayerStateManager>
     public override void UpdateState(PlayerStateManager state)
     {
         horizontal = Input.GetAxisRaw("Horizontal");
-        Vector2 aimDirection = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - state.transform.position).normalized;
 
-        state.anim.SetFloat("AimX", aimDirection.x);
-        state.anim.SetFloat("AimY", aimDirection.y);
+        state.UpdateAim();
 
         if (horizontal < 0f && state.IsFacingRight || horizontal > 0f && !state.IsFacingRight)
         {

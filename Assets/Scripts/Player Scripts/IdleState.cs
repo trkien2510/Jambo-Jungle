@@ -10,10 +10,7 @@ public class IdleState : State<PlayerStateManager>
 
     public override void UpdateState(PlayerStateManager state)
     {
-        Vector2 aimDirection = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - state.transform.position).normalized;
-
-        state.anim.SetFloat("AimX", aimDirection.x);
-        state.anim.SetFloat("AimY", aimDirection.y);
+        state.UpdateAim();
 
         horizontal = Input.GetAxisRaw("Horizontal");
 

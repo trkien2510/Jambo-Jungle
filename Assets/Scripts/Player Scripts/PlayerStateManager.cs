@@ -1,5 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerStateManager : Subject
 {
@@ -14,6 +15,7 @@ public class PlayerStateManager : Subject
 
     private Animator animator;
     private bool isFacingRight = true;
+    public Vector2 AimDirection;
 
     private void Start()
     {
@@ -26,6 +28,15 @@ public class PlayerStateManager : Subject
     private void Update()
     {
         currentState.UpdateState(this);
+    }
+
+    public void UpdateAim()
+    {
+        Vector2 rawDir = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position);
+        AimDirection = rawDir.normalized;
+
+        anim.SetFloat("AimX", AimDirection.x);
+        anim.SetFloat("AimY", AimDirection.y);
     }
 
     public void SwitchCurrentState(State<PlayerStateManager> state)
