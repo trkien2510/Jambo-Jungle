@@ -1,11 +1,14 @@
 using UnityEngine;
 
-public class AudioEventListener : MonoBehaviour, IObserver
+public class AudioEventListener : MonoBehaviour, IObserver<SoundEvent>
 {
     public void OnNotify(SoundEvent action)
     {
         switch (action)
         {
+            case SoundEvent.music:
+                AudioManager.Instance.PlayBGM(AudioManager.Instance.music);
+                break;
             case SoundEvent.hurt:
                 AudioManager.Instance.PlaySFX(AudioManager.Instance.hurt);
                 break;
@@ -27,6 +30,15 @@ public class AudioEventListener : MonoBehaviour, IObserver
             case SoundEvent.click:
                 AudioManager.Instance.PlaySFX(AudioManager.Instance.click);
                 break;
+            case SoundEvent.bossFire:
+                AudioManager.Instance.PlaySFX(AudioManager.Instance.bossFire);
+                break;
+            case SoundEvent.laser:
+                AudioManager.Instance.PlaySFX(AudioManager.Instance.laser);
+                break;
+            case SoundEvent.bossTheme:
+                AudioManager.Instance.PlayBGM(AudioManager.Instance.bossTheme);
+                break;
             default:
                 break;
         }
@@ -34,7 +46,7 @@ public class AudioEventListener : MonoBehaviour, IObserver
 
     private void OnEnable()
     {
-        foreach (var subject in FindObjectsOfType<Subject>())
+        foreach (var subject in FindObjectsOfType<Subject<SoundEvent>>())
         {
             subject.AddObserver(this);
         }
@@ -42,7 +54,7 @@ public class AudioEventListener : MonoBehaviour, IObserver
 
     private void OnDisable()
     {
-        foreach (var subject in FindObjectsOfType<Subject>())
+        foreach (var subject in FindObjectsOfType<Subject<SoundEvent>>())
         {
             subject.RemoveObserver(this);
         }

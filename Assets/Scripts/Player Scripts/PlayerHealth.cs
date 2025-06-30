@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerStateManager))]
-public class PlayerHealth : Subject
+public class PlayerHealth : Subject<SoundEvent>
 {
     private SpriteRenderer spriteRenderer;
 
@@ -20,7 +20,7 @@ public class PlayerHealth : Subject
 
         foreach (var observer in FindObjectsOfType<MonoBehaviour>())
         {
-            if (observer is IObserver obs)
+            if (observer is IObserver<SoundEvent> obs)
             {
                 AddObserver(obs);
             }

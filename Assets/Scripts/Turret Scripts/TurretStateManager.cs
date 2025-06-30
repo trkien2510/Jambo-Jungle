@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class TurretStateManager : Subject
+public class TurretStateManager : Subject<SoundEvent>
 {
     State<TurretStateManager> currentState;
 
@@ -17,7 +17,7 @@ public class TurretStateManager : Subject
 
         foreach (var observer in FindObjectsOfType<MonoBehaviour>())
         {
-            if (observer is IObserver obs)
+            if (observer is IObserver<SoundEvent> obs)
             {
                 AddObserver(obs);
             }

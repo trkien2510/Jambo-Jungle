@@ -1,10 +1,10 @@
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerStateManager))]
-public class PlayerSpawnBullet : Subject
+public class PlayerSpawnBullet : Subject<SoundEvent>
 {
     private Vector2Int direction;
-    private float timeInteval = 0.25f;
+    private float timeInteval = 0.2f;
     private float timer;
     private PlayerStateManager playerState;
 
@@ -36,13 +36,13 @@ public class PlayerSpawnBullet : Subject
             return;
         }
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && Time.timeScale > 0f)
         {
             SpawnBullet("PlayerBullet");
             timer = 0f;
         }
 
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) && Time.timeScale > 0f)
         {
             timer += Time.deltaTime;
             if (timer > timeInteval)

@@ -1,4 +1,4 @@
-public interface IObserver
+public interface IObserver<T>
 {
-    public void OnNotify(SoundEvent action);
+    public void OnNotify(T action);
 }

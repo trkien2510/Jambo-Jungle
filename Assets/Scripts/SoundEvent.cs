@@ -1,5 +1,6 @@
 public enum SoundEvent
 {
+    music,
     hurt,
     dead,
     jump,
@@ -8,4 +9,8 @@ public enum SoundEvent
     enemyShoot,
     explosion,
     click,
+    bossDead,
+    bossTheme,
+    laser,
+    bossFire,
 }

@@ -2,7 +2,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class PlayerStateManager : Subject
+public class PlayerStateManager : Subject<SoundEvent>
 {
     State<PlayerStateManager> currentState;
 
@@ -43,7 +43,6 @@ public class PlayerStateManager : Subject
     {
         currentState = state;
         state.EnterState(this);
-        Debug.Log(state);
     }
 
     public void Flip()

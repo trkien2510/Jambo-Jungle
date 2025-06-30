@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(EnemyStateManager))]
-public class EnemyHealth : Subject
+public class EnemyHealth : Subject<SoundEvent>
 {
     private float enemyHealth;
     private float enemyMaxHealth = 100f;
@@ -15,7 +15,7 @@ public class EnemyHealth : Subject
 
         foreach (var observer in FindObjectsOfType<MonoBehaviour>())
         {
-            if (observer is IObserver obs)
+            if (observer is IObserver<SoundEvent> obs)
             {
                 AddObserver(obs);
             }

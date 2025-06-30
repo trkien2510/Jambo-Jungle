@@ -6,8 +6,8 @@ public class PlayerBullet : MonoBehaviour
 {
     private Rigidbody2D rb;
     private Animator anim;
-    private float speed = 10f;
-    private float dmg = 15f;
+    private float speed = 15f;
+    private float dmg = 20f;
 
     public void Initialize(Vector2 direction)
     {
@@ -54,6 +54,12 @@ public class PlayerBullet : MonoBehaviour
             barrelHealth.TakeDamage(dmg);
             StartCoroutine(Impact());
         }
+        if (collision.CompareTag("Boss"))
+        {
+            BossHealth bossHealth = collision.GetComponent<BossHealth>();
+            bossHealth.TakeDamage(dmg);
+            StartCoroutine(Impact());
+        }
     }
 
     IEnumerator Impact()
@@ -66,7 +72,7 @@ public class PlayerBullet : MonoBehaviour
 
     IEnumerator OutOfTime()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         anim.SetBool("OutOfTime", true);
         yield return new WaitForSeconds(0.5f);
         gameObject.SetActive(false);

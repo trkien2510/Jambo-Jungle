@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class PortalHealth : Subject
+public class PortalHealth : Subject<SoundEvent>
 {
     private SpriteRenderer rend;
     private BoxCollider2D col;
@@ -29,7 +29,7 @@ public class PortalHealth : Subject
 
         foreach (var observer in FindObjectsOfType<MonoBehaviour>())
         {
-            if (observer is IObserver obs)
+            if (observer is IObserver<SoundEvent> obs)
             {
                 AddObserver(obs);
             }

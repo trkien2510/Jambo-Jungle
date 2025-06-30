@@ -1,24 +1,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Subject : MonoBehaviour
+public abstract class Subject<T> : MonoBehaviour
 {
-    private List<IObserver> observers = new List<IObserver>();
+    private List<IObserver<T>> observers = new List<IObserver<T>>();
 
-    public void AddObserver(IObserver observer)
+    public void AddObserver(IObserver<T> observer)
     {
         if (!observers.Contains(observer))
             observers.Add(observer);
     }
 
-    public void RemoveObserver(IObserver observer)
+    public void RemoveObserver(IObserver<T> observer)
     {
         observers.Remove(observer);
     }
 
-    protected void NotifyObserver(SoundEvent action)
+    protected void NotifyObserver(T action)
     {
-        var currentObservers = new List<IObserver>(observers);
+        var currentObservers = new List<IObserver<T>>(observers);
 
         foreach (var observer in currentObservers)
         {

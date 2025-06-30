@@ -2,7 +2,7 @@ using UnityEngine;
 
 
 [RequireComponent (typeof(Animator), typeof(Rigidbody2D), typeof(BoxCollider2D))]
-public class Barrel : Subject
+public class Barrel : Subject<SoundEvent>
 {
     private Animator anim;
     private BoxCollider2D boxCol;
@@ -22,7 +22,7 @@ public class Barrel : Subject
 
         foreach (var observer in FindObjectsOfType<MonoBehaviour>())
         {
-            if (observer is IObserver obs)
+            if (observer is IObserver<SoundEvent> obs)
             {
                 AddObserver(obs);
             }

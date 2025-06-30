@@ -7,7 +7,7 @@ public class EnemyBullet : MonoBehaviour
     private Rigidbody2D rb;
     private Animator anim;
     private float speed = 10f;
-    private float dmg = 10f;
+    [SerializeField] float dmg;
 
     public void Initialize(Vector2 direction)
     {
@@ -38,13 +38,17 @@ public class EnemyBullet : MonoBehaviour
                 gameObject.SetActive(false);
             }
         }
-        //using if the bullet can't through the wall
-        //if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
-        //{
-        //    StopCoroutine(OutOfTime());
-        //    StartCoroutine(TouchGround());
-        //}
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        {
+            StartCoroutine(TouchGround());
+        }
     }
+
+    public void SetSpeed(float s)
+    {
+        speed = s;
+    }
+
 
     IEnumerator TouchGround()
     {
@@ -56,7 +60,7 @@ public class EnemyBullet : MonoBehaviour
 
     IEnumerator OutOfTime()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
         anim.SetBool("Explosion", true);
         yield return new WaitForSeconds(0.5f);
         gameObject.SetActive(false);

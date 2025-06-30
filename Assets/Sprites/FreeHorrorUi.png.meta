@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a5171e3658a79de4b992d9b658a25565
+guid: 702fab3351801ca4baafb5c2202dd579
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -111,7 +111,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -123,127 +123,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Boss_Fire_Expl_0
+      name: FreeHorrorUi_41
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 32
-        height: 32
+        x: 130
+        y: 161
+        width: 28
+        height: 29
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: be766de8e3cc4fc40bbe7730a6a89e29
-      internalID: -791762269
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Boss_Fire_Expl_1
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a926f26d519c3c4479ec39fbc2ee9593
-      internalID: 695966640
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Boss_Fire_Expl_2
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 94a32b32aee06634dbfa4e2ccede7f3a
-      internalID: -198607238
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Boss_Fire_Expl_3
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7e20b5b9938533b49be6110da0b3755e
-      internalID: 2088515277
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Boss_Fire_Expl_4
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e94ced317fda0f84597a63b838027a09
-      internalID: 763892875
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Boss_Fire_Expl_5
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6955deedd82663c458f125622ebe9892
-      internalID: -419965528
+      spriteID: 8254109c059e18647a4fa385231f5489
+      internalID: -940100895
       vertices: []
       indices: 
       edges: []
@@ -259,12 +154,97 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Boss_Fire_Expl_0: -791762269
-      Boss_Fire_Expl_1: 695966640
-      Boss_Fire_Expl_2: -198607238
-      Boss_Fire_Expl_3: 2088515277
-      Boss_Fire_Expl_4: 763892875
-      Boss_Fire_Expl_5: -419965528
+      FreeHorrorUi_0: 1411845632
+      FreeHorrorUi_1: 335511087
+      FreeHorrorUi_10: -1682750293
+      FreeHorrorUi_11: 369546491
+      FreeHorrorUi_12: 1932311975
+      FreeHorrorUi_13: -1355790227
+      FreeHorrorUi_14: -2137069151
+      FreeHorrorUi_15: -576839502
+      FreeHorrorUi_16: 1965481370
+      FreeHorrorUi_17: -293579907
+      FreeHorrorUi_18: -303855915
+      FreeHorrorUi_19: -1113462136
+      FreeHorrorUi_2: 2077204238
+      FreeHorrorUi_20: 573028917
+      FreeHorrorUi_21: -1371222530
+      FreeHorrorUi_22: 749482509
+      FreeHorrorUi_23: 879361146
+      FreeHorrorUi_24: 1842369095
+      FreeHorrorUi_25: 318669888
+      FreeHorrorUi_26: 295984741
+      FreeHorrorUi_27: -947121623
+      FreeHorrorUi_28: -166096418
+      FreeHorrorUi_29: -1428301513
+      FreeHorrorUi_3: 1166141305
+      FreeHorrorUi_30: -810274460
+      FreeHorrorUi_31: 383490676
+      FreeHorrorUi_32: 1715441500
+      FreeHorrorUi_33: 1214471015
+      FreeHorrorUi_34: -1902282314
+      FreeHorrorUi_35: 805444601
+      FreeHorrorUi_36: -1697353948
+      FreeHorrorUi_37: 1279881604
+      FreeHorrorUi_38: -169659675
+      FreeHorrorUi_39: 1211956519
+      FreeHorrorUi_4: 1840870341
+      FreeHorrorUi_40: 901535251
+      FreeHorrorUi_41: -940100895
+      FreeHorrorUi_42: 974963294
+      FreeHorrorUi_43: -1087905299
+      FreeHorrorUi_44: -158935254
+      FreeHorrorUi_45: -329245293
+      FreeHorrorUi_46: -1051186859
+      FreeHorrorUi_47: 1729114038
+      FreeHorrorUi_48: -1765045448
+      FreeHorrorUi_49: 1611870231
+      FreeHorrorUi_5: -2023185850
+      FreeHorrorUi_50: 1493513264
+      FreeHorrorUi_51: -1689207555
+      FreeHorrorUi_52: -393341728
+      FreeHorrorUi_53: -1959257193
+      FreeHorrorUi_54: 1903752907
+      FreeHorrorUi_55: -1452454260
+      FreeHorrorUi_56: -1659400830
+      FreeHorrorUi_57: 1626349769
+      FreeHorrorUi_58: -489639957
+      FreeHorrorUi_59: -2124486681
+      FreeHorrorUi_6: 136032937
+      FreeHorrorUi_60: -371666713
+      FreeHorrorUi_61: 422459
+      FreeHorrorUi_62: -796768481
+      FreeHorrorUi_63: 245389803
+      FreeHorrorUi_64: 2065712332
+      FreeHorrorUi_65: 127713814
+      FreeHorrorUi_66: -175610666
+      FreeHorrorUi_67: -707737224
+      FreeHorrorUi_68: 372753637
+      FreeHorrorUi_69: -1178634698
+      FreeHorrorUi_7: 1724867520
+      FreeHorrorUi_70: -1889156954
+      FreeHorrorUi_71: -691388859
+      FreeHorrorUi_72: 992766403
+      FreeHorrorUi_73: -1518267603
+      FreeHorrorUi_74: 2054226505
+      FreeHorrorUi_75: -146535448
+      FreeHorrorUi_76: -1137692931
+      FreeHorrorUi_77: -251827391
+      FreeHorrorUi_78: 1462777771
+      FreeHorrorUi_79: -442013251
+      FreeHorrorUi_8: 1772653233
+      FreeHorrorUi_80: 980586244
+      FreeHorrorUi_81: -1624042503
+      FreeHorrorUi_82: 392553296
+      FreeHorrorUi_83: 1313201146
+      FreeHorrorUi_84: 1899993414
+      FreeHorrorUi_85: 1346352359
+      FreeHorrorUi_86: -862755063
+      FreeHorrorUi_87: 1676440111
+      FreeHorrorUi_88: 1495680995
+      FreeHorrorUi_89: 434314302
+      FreeHorrorUi_9: -146817694
+      FreeHorrorUi_90: -86519618
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
