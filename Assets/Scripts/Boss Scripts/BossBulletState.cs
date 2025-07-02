@@ -8,7 +8,7 @@ public class BossBulletState : State<BossStateManager>
         state.anim.SetBool("Bullet", true);
         state.StartCoroutine(WaitToSpawnBullet(state));
 
-        state.NotifyBossState(SoundEvent.bossFire);
+        state.NotifyBossState(GameEvent.BossFireball);
     }
 
     public override void ExitState(BossStateManager state)

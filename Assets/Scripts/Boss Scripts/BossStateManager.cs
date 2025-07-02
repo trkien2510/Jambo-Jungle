@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BossStateManager : Subject<SoundEvent>
+public class BossStateManager : Subject
 {
     State<BossStateManager> currentState;
 
@@ -34,7 +34,7 @@ public class BossStateManager : Subject<SoundEvent>
         currentState.EnterState(this);
     }
 
-    public void NotifyBossState(SoundEvent action)
+    public void NotifyBossState(GameEvent action)
     {
         NotifyObserver(action);
     }

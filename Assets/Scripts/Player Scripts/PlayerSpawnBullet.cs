@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerStateManager))]
-public class PlayerSpawnBullet : Subject<SoundEvent>
+public class PlayerSpawnBullet : Subject
 {
     private Vector2Int direction;
     private float timeInteval = 0.2f;
@@ -107,7 +107,7 @@ public class PlayerSpawnBullet : Subject<SoundEvent>
         if (playerBullet != null)
         {
             playerBullet.GetComponent<PlayerBullet>().Initialize(direction);
-            NotifyObserver(SoundEvent.shoot);
+            NotifyObserver(GameEvent.PlayerShoot);
         }
     }
 }

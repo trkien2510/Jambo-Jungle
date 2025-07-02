@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class UIManager : Subject<SoundEvent>
+public class UIManager : Subject
 {
     public void LoadHome()
     {
@@ -30,39 +30,35 @@ public class UIManager : Subject<SoundEvent>
 
     public void ExitGame()
     {
-        NotifyObserver(SoundEvent.click);
         Application.Quit();
     }
 
     public void RestartGame()
     {
-        NotifyObserver(SoundEvent.music);
-        NotifyObserver(SoundEvent.click);
+        NotifyObserver(GameEvent.MainBGM);
         ResumeGame();
         StartCoroutine(LoadSceneIndexAsync(SceneManager.GetActiveScene().buildIndex));
     }
 
     public void PauseGame()
     {
-        NotifyObserver(SoundEvent.click);
         Time.timeScale = 0f;
     }
 
     public void ResumeGame()
     {
-        NotifyObserver(SoundEvent.click);
         Time.timeScale = 1f;
     }
 
     public void JustClick()
     {
-        NotifyObserver(SoundEvent.click);
+        NotifyObserver(GameEvent.Click);
     }
 
 
     IEnumerator LoadSceneAsync(string name)
     {
-        NotifyObserver(SoundEvent.music);
+        NotifyObserver(GameEvent.MainBGM);
         AsyncOperation op = SceneManager.LoadSceneAsync(name);
         while (!op.isDone)
         {
@@ -73,7 +69,7 @@ public class UIManager : Subject<SoundEvent>
 
     IEnumerator LoadSceneIndexAsync(int index)
     {
-        NotifyObserver(SoundEvent.music);
+        NotifyObserver(GameEvent.MainBGM);
         AsyncOperation op = SceneManager.LoadSceneAsync(index);
         while (!op.isDone)
         {

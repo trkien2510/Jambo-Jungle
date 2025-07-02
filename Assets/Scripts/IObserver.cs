@@ -1,4 +1,4 @@
-public interface IObserver<T>
+public interface IObserver
 {
-    public void OnNotify(T action);
+    public void OnNotify(GameEvent action);
 }

@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class SpawnEnemy : MonoBehaviour
 {
-    private float spawnInterval = 3f;
+    private float spawnInterval = 1.5f;
     private float spawnTimer = 0f;
     private Transform player;
-    private float detectRange = 5f;
+    private float detectRange = 7.5f;
 
     void Start()
     {

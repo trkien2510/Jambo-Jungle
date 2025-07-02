@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerStateManager))]
-public class PlayerHealth : Subject<SoundEvent>
+public class PlayerHealth : Subject
 {
     private SpriteRenderer spriteRenderer;
 
@@ -17,14 +17,6 @@ public class PlayerHealth : Subject<SoundEvent>
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         currentHealth = maxHealth;
-
-        foreach (var observer in FindObjectsOfType<MonoBehaviour>())
-        {
-            if (observer is IObserver<SoundEvent> obs)
-            {
-                AddObserver(obs);
-            }
-        }
     }
 
     private void Update()
@@ -51,6 +43,8 @@ public class PlayerHealth : Subject<SoundEvent>
 
             canTakeDamaged = false;
             timer = 0;
+
+            NotifyObserver(GameEvent.PlayerDamaged);
             StartCoroutine(FlashSprite());
         }
     }

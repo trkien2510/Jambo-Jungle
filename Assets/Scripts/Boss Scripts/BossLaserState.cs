@@ -34,7 +34,7 @@ public class BossLaserState : State<BossStateManager>
 
         yield return new WaitForSeconds(1f);
 
-        state.NotifyBossState(SoundEvent.laser);
+        state.NotifyBossState(GameEvent.BossLaser);
 
         state.LeftEye.GetComponent<Animator>().SetBool("Charge", false);
         state.RightEye.GetComponent<Animator>().SetBool("Charge", false);

@@ -26,7 +26,7 @@ public class IdleState : State<PlayerStateManager>
                 state.SwitchCurrentState(state.runState);
             }
         }
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Space))
         {
             state.SwitchCurrentState(state.jumpState);
         }

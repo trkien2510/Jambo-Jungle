@@ -28,5 +28,7 @@ public class DeadState : State<PlayerStateManager>
     {
         yield return new WaitForSeconds(1f);
         ExitState(state);
+        yield return new WaitForSeconds(2f);
+        state.NotifyPlayerObservers(GameEvent.levelLose);
     }
 }

@@ -10,19 +10,19 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioSource SFX;
 
     [Header("Audio Clips")]
-    public AudioClip music;
+    public AudioClip mainBGM;
     public AudioClip bossTheme;
-    public AudioClip lose;
-    public AudioClip step;
-    public AudioClip hurt;
-    public AudioClip jump;
-    public AudioClip shoot;
+    public AudioClip levelLose;
+    public AudioClip playerRun;
+    public AudioClip playerHurt;
+    public AudioClip playerJump;
+    public AudioClip playerShoot;
     public AudioClip enemyShoot;
     public AudioClip explosion;
     public AudioClip click;
-    public AudioClip laser;
-    public AudioClip bossFire;
-    public AudioClip bossExplosion;
+    public AudioClip bossLaser;
+    public AudioClip bossFireball;
+    public AudioClip bossDefeated;
 
     [Header("Audio Mixer")]
     [SerializeField] AudioMixer audioMixer;
@@ -45,7 +45,7 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        PlayBGM(music);
+        PlayBGM(mainBGM);
     }
 
     public void PlayBGM(AudioClip music)
@@ -58,7 +58,7 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
-            BGM.clip = this.music;
+            BGM.clip = this.mainBGM;
             BGM.loop = true;
             BGM.Play();
         }
@@ -68,7 +68,7 @@ public class AudioManager : MonoBehaviour
     {
         isBgmOn = isOn;
         if (isOn)
-            PlayBGM(music);
+            PlayBGM(mainBGM);
         else
             BGM.Stop();
     }

@@ -1,22 +1,16 @@
 using Cinemachine;
 using UnityEngine;
-using UnityEngine.Playables;
 
-public class BossTransition : Subject<SoundEvent>
+public class BossTransition : Subject
 {
     [SerializeField] PolygonCollider2D boundBossRoom;
     [SerializeField] CinemachineConfiner2D confiner;
-    [SerializeField] PlayableDirector bossIntro;
     [SerializeField] Transform newLocation;
+    [SerializeField] Transform newTarget;
 
     void Start()
     {
         confiner = FindObjectOfType<CinemachineConfiner2D>();
-    }
-
-    void Update()
-    {
-        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -24,10 +18,11 @@ public class BossTransition : Subject<SoundEvent>
         if (collision.CompareTag("Player"))
         {
             confiner.m_BoundingShape2D = boundBossRoom;
+            confiner.gameObject.GetComponent<CinemachineVirtualCamera>().Follow = newTarget;
 
             collision.gameObject.transform.position = newLocation.position;
-            bossIntro.Play();
-            NotifyObserver(SoundEvent.bossTheme);
+            NotifyObserver(GameEvent.BossTheme);
+            NotifyObserver(GameEvent.BossIntro);
         }
     }
 }

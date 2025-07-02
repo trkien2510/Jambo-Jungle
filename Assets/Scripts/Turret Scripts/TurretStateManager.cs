@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class TurretStateManager : Subject<SoundEvent>
+public class TurretStateManager : Subject
 {
     State<TurretStateManager> currentState;
 
@@ -14,14 +14,6 @@ public class TurretStateManager : Subject<SoundEvent>
         animator = GetComponent<Animator>();
         currentState = nomalState;
         currentState.EnterState(this);
-
-        foreach (var observer in FindObjectsOfType<MonoBehaviour>())
-        {
-            if (observer is IObserver<SoundEvent> obs)
-            {
-                AddObserver(obs);
-            }
-        }
     }
 
     private void Update()
@@ -31,7 +23,7 @@ public class TurretStateManager : Subject<SoundEvent>
 
     public void SwitchBrokeState()
     {
-        NotifyObserver(SoundEvent.explosion);
+        NotifyObserver(GameEvent.Explosion);
         currentState = brokeState;
         currentState.EnterState(this);
         GetComponent<TurretHealth>().enabled = false;

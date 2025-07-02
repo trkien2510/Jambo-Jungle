@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class BossIdleState : State<BossStateManager>
 {
-    private float timeInterval = 2f;
+    private float timeInterval = 1.5f;
     private float timer = 0f;
     public override void EnterState(BossStateManager state)
     {

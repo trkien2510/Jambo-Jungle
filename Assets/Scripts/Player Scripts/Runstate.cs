@@ -13,7 +13,7 @@ public class RunState : State<PlayerStateManager>
     {
         rb = state.GetComponent<Rigidbody2D>();
         state.anim.SetBool("Running", true);
-        state.NotifyPlayerObservers(SoundEvent.run);
+        state.NotifyPlayerObservers(GameEvent.PlayerRun);
         stepTimer = 0f;
     }
 
@@ -35,7 +35,7 @@ public class RunState : State<PlayerStateManager>
             stepTimer += Time.deltaTime;
             if (stepTimer >= stepInterval)
             {
-                state.NotifyPlayerObservers(SoundEvent.run);
+                state.NotifyPlayerObservers(GameEvent.PlayerRun);
                 stepTimer = 0f;
             }
         }
@@ -55,7 +55,7 @@ public class RunState : State<PlayerStateManager>
             state.SwitchCurrentState(state.idleState);
         }
 
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Space))
         {
             state.anim.SetBool("Running", false);
             state.SwitchCurrentState(state.jumpState);

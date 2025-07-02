@@ -2,7 +2,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class PlayerStateManager : Subject<SoundEvent>
+public class PlayerStateManager : Subject
 {
     State<PlayerStateManager> currentState;
 
@@ -51,7 +51,7 @@ public class PlayerStateManager : Subject<SoundEvent>
         isFacingRight = !isFacingRight;
     }
 
-    public void NotifyPlayerObservers(SoundEvent action)
+    public void NotifyPlayerObservers(GameEvent action)
     {
         NotifyObserver(action);
     }

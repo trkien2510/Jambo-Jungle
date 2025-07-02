@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class PortalHealth : Subject<SoundEvent>
+public class PortalHealth : Subject
 {
     private SpriteRenderer rend;
     private BoxCollider2D col;
@@ -26,14 +26,6 @@ public class PortalHealth : Subject<SoundEvent>
 
         if (explosionEffect != null)
             explosionEffect.SetActive(false);
-
-        foreach (var observer in FindObjectsOfType<MonoBehaviour>())
-        {
-            if (observer is IObserver<SoundEvent> obs)
-            {
-                AddObserver(obs);
-            }
-        }
     }
 
     public void TakeDamage(float amount)
@@ -52,7 +44,7 @@ public class PortalHealth : Subject<SoundEvent>
     {
         if (explosionEffect != null)
         {
-            NotifyObserver(SoundEvent.explosion);
+            NotifyObserver(GameEvent.Explosion);
             explosionEffect.SetActive(true);
             anim.SetTrigger("Explosion");
             rb.bodyType = RigidbodyType2D.Kinematic;

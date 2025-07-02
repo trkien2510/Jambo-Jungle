@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(BossStateManager))]
-public class BossHealth : MonoBehaviour
+public class BossHealth : Subject
 {
     private float health;
-    private float maxHealth = 2000f;
+    private float maxHealth = 5000f;
 
     void Start()
     {
@@ -21,9 +19,13 @@ public class BossHealth : MonoBehaviour
     public void TakeDamage(float amount)
     {
         health -= amount;
+        NotifyObserver(GameEvent.BossDamaged);
         if (health <= 0)
         {
-            Debug.Log("boss dead");
+            NotifyObserver(GameEvent.BossDefeated);
         }
     }
+
+    public float Health => health;
+    public float MaxHealth => maxHealth;
 }
